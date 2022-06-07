@@ -23,14 +23,8 @@ toInpt.addEventListener('input', ()=>{
     onInput(toInpt, list[1])
 })
 
-function onInput(input, list){
 
-    if(input.value.length==3){
-        list.style.display='none'
-    }
-    else if(input.value.length<3){
-        list.style.display='block'
-    }
+function onInput(input, list){
 
     while (list.firstChild) {
         list.removeChild(list.lastChild);

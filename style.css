@@ -1,4 +1,4 @@
-*{box-sizing: border-box; margin: 0; padding: 0;}
+*{box-sizing: border-box; margin: 0; padding: 0; font-family: Helvetica;}
 
 .inputs{
     display: flex;
@@ -10,21 +10,52 @@
     gap: 20px;
 }
 .list{
+    margin-top: 10px;
     max-height: 200px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+
+    overflow: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
     position: absolute;
-    background-color: aliceblue;
-    width: 150px;
+    background-color: rgb(252, 252, 252);
+    width: 200px;
+    display: none;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 7px;
 }
+    .list p{
+        padding: .5em;
+        cursor: pointer;
+    }
+    .list p:hover{
+        background: rgb(243, 243, 243);
+    }
 .row{
-    width: 150px;
+    width: 200px;
 }
 .data{
     width: 100%;
     padding: .5em;
     text-transform: uppercase;
+    border-radius: 7px;
+    border: 1px solid rgb(192, 192, 192);
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
 }
 .submit{
-    width: 150px;
+    width: 200px;
+    padding: .5em;
+}
+
+.input1:focus + .dropdown1{
+    display: block;
+}
+.input2:focus + .dropdown2{
+    display: block;
+}
+.dropdown1:active{
+    display: block;
+}
+.dropdown2:active{
+    display: block;
 }
