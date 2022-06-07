@@ -43,5 +43,5 @@ const options = {
 };
 fetch('https://currency-converter-by-api-ninjas.p.rapidapi.com/v1/convertcurrency?have='+fromInpt.value+'&want='+toInpt.value+'&amount='+amountInpt.value+'', options)
 .then(response => response.json())
-.then(data => {result.innerHTML = data.new_amount})
+.then(data => {result.innerHTML = amountInpt.value+' '+fromInpt.value+' =<span><br>'+data.new_amount+' '+toInpt.value+'</span>'})
 .catch(err => console.error(err));
