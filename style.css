@@ -1,0 +1,16 @@
+*{box-sizing: border-box; margin: 0; padding: 0; border: 1px solid black;}
+
+.inputs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    gap: 20px;
+}
+button, .number{
+    width: 150px;
+    padding: .5em;
+}
