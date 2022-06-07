@@ -9,14 +9,22 @@
     height: 100vh;
     gap: 20px;
 }
-.data{
-    width: 150px;
-    padding: .5em;
-    border: 1px solid black;
-}
 .list{
-    width: 150px;
     max-height: 200px;
     overflow-y: scroll;
     overflow-x: hidden;
+    position: absolute;
+    background-color: aliceblue;
+    width: 150px;
+}
+.row{
+    width: 150px;
+}
+.data{
+    width: 100%;
+    padding: .5em;
+    text-transform: uppercase;
+}
+.submit{
+    width: 150px;
 }
