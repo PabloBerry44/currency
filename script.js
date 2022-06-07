@@ -1,5 +1,3 @@
-
-
 let amountInpt = document.querySelectorAll('.data')[0]
 let fromInpt = document.querySelectorAll('.data')[1]
 let toInpt = document.querySelectorAll('.data')[2]
