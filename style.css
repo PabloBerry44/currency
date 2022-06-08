@@ -4,10 +4,10 @@
     outline: 0; 
     padding: 0; 
     font-family: Helvetica;
-    font-size: 1.2rem;
+    font-size: 1.05rem;
 }
 
-.inputs{
+.container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,13 +16,16 @@
     background: rgb(252, 252, 252);
 }
 .converter{
-    background: #f0f0f0;
+    width: 90%;
+    position: relative;
+    background: #002657;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 25px;
-    padding: 50px;
+    padding: .7em;
     border-radius: 20px;
     box-shadow:
     4.5px 4.5px 3.6px rgba(0, 0, 0, 0.024),
@@ -30,41 +33,54 @@
     30.1px 30.1px 24.1px rgba(0, 0, 0, 0.046),
     100px 100px 80px rgba(0, 0, 0, 0.07);
 }
-.list{
-    margin-top: 10px;
-    max-height: 250px;
-    overflow: scroll;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-    position: absolute;
-    background-color: rgb(252, 252, 252);
-    width: 250px;
-    display: none;
-    border: 1px solid rgb(192, 192, 192);
-    border-radius: 7px;
-}
-    .list p{
-        padding: .5em;
-        cursor: pointer;
-    }
-    .list p:hover{
-        background: rgb(243, 243, 243);
+    .converter h1{
+        font-size: 2rem;
     }
 .row{
-    max-width: 250px;
+    width: 80%;
+    position: relative;
 }
-.data{
+input{
     width: 100%;
-    padding: .5em;
+    padding: .4em;
     text-transform: uppercase;
     border-radius: 7px;
     border: 1px solid rgb(192, 192, 192);
     -webkit-appearance: none;
     -moz-appearance: textfield;
 }
+    .row img{
+        width: 1em;
+        position: absolute;
+        right: .5em;
+        top: 1.7em;
+        cursor: pointer;
+    }
+    .list{
+        margin-top: 10px;
+        max-height: 250px;
+        width: 100%;
+        overflow: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        position: absolute;
+        z-index: 3;
+        background-color: white;
+        display: none;
+        border: 1px solid gainsboro;
+        border-radius: 7px;
+        color: black;
+    }
+        .list p{
+            padding: .4em;
+            cursor: pointer;
+        }
+        .list p:hover{
+            background: rgb(243, 243, 243);
+        }
 .submit{
-    max-width: 250px;
-    padding: .5em;
+    text-transform: none;
+    width: 200px;
 }
 
 .input1:focus + .dropdown1{
@@ -81,9 +97,17 @@
 }
 
 .result{
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: center;
 }
     .result span{
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
+    @media only screen and (min-width: 350px) {
+    .converter{
+        width: 330px;
+    }
+    *{
+        font-size: 1.2rem;
+    }
+}
