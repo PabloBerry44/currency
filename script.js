@@ -5,7 +5,6 @@ const input = document.querySelectorAll('.data')
 const submit = document.querySelector('.submit')
 const list = document.querySelectorAll('.list')
 const result = document.querySelector('.result')
-weGood = false
 
 input.forEach(input => {
     input.addEventListener('click', ()=>{
@@ -16,14 +15,14 @@ input.forEach(input => {
 const currency = ['AED','AFN','ALL','AMD','ANG','AOA','ARS','AUD','AWG','AZN','BAM','BBD','BDT','BGN','BHD','BIF','BMD','BND','BOB','BRL','BSD','BTC','BTN','BWP','BYN','BYR','BZD','CAD','CDF','CHF','CLF','CLP','CNY','COP','CRC','CUC','CUP','CVE','CZK','DJF','DKK','DOP','DZD','EGP','ERN','ETB','EUR','FJD','FKP','GBP','GEL','GGP','GHS','GIP','GMD','GNF','GTQ','GYD','HKD','HNL','HRK','HTG','HUF','IDR','ILS','IMP','INR','IQD','IRR','ISK','JEP','JMD','JOD','JPY','KES','KGS','KHR','KMF','KPW','KRW','KWD','KYD','KZT','LAK','LBP','LKR','LRD','LSL','LVL','LYD','MAD','MDL','MGA','MKD','MMK','MNT','MOP','MRO','MUR','MVR','MWK','MXN','MYR','MZN','NAD','NGN','NIO','NOK','NPR','NZD','OMR','PAB','PEN','PGK','PHP','PKR','PLN','PYG','QAR','RON','RSD','RUB','RWF','SAR','SBD','SCR','SDG','SEK','SGD','SHP','SLL','SOS','SRD','STD','SVC','SYP','SZL','THB','TJS','TMT','TND','TOP','TRY','TTD','TWD','TZS','UAH','UGX','USD','UYU','UZS','VEF','VND','VUV','WST','XAF','XAG','XCD','XDR','XOF','XPF','YER','ZAR','ZMK','ZMW','ZWL']
 
 submit.addEventListener('click', ()=>{
-    if(weGood && currency.includes(toInpt.value) && currency.includes(fromInpt.value)){
+    if(!isNaN(amountInpt.value) && currency.includes(toInpt.value) && currency.includes(fromInpt.value)){
         passToApi()
         result.innerHTML=''
         result.style.textTransform='uppercase'
     }
     else{
         result.style.textTransform='none'
-        result.innerHTML='No such currency'
+        result.innerHTML='No such currency <br> or wrong amount'
     }
 })
 fromInpt.addEventListener('input', ()=>{
@@ -51,7 +50,6 @@ function onInput(input, list){
       });
       if(list.firstChild){
         input.style.backgroundColor = 'white'
-        weGood = true
       }
       else{
         input.style.backgroundColor = 'pink'
