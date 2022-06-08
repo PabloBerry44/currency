@@ -4,7 +4,7 @@
     outline: 0; 
     padding: 0; 
     font-family: Helvetica;
-    font-size: 1.05rem;
+    font-size: 1rem;
 }
 
 .container{
@@ -16,7 +16,7 @@
     background: rgb(252, 252, 252);
 }
 .converter{
-    width: 90%;
+    width: 80%;
     position: relative;
     background: #002657;
     color: white;
@@ -96,14 +96,17 @@ input{
     display: block;
 }
 
-.result{
-    font-size: 1rem;
-    text-align: center;
+.resultBox{
+    height: 4rem;
 }
-    .result span{
-        font-size: 2rem;
+    .result{
+        text-align: center;
+        text-transform: uppercase;
     }
-    @media only screen and (min-width: 350px) {
+        .result span{
+            font-size: 1.7rem;
+        }
+    @media only screen and (min-width: 400px) {
     .converter{
         width: 330px;
     }

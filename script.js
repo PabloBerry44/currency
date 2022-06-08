@@ -5,6 +5,7 @@ const input = document.querySelectorAll('.data')
 const submit = document.querySelector('.submit')
 const list = document.querySelectorAll('.list')
 const result = document.querySelector('.result')
+weGood = false
 
 input.forEach(input => {
     input.addEventListener('click', ()=>{
@@ -12,17 +13,19 @@ input.forEach(input => {
     })
 });
 
-// for(let i=0;i<closeBtn.length;i++){
-//     indexOfInput = i+1
-//     closeBtn[i].addEventListener('click', ()=>{
-//         index = i+1
-//         inputs[index].value=''
-//     })
-// }
-
 const currency = ['AED','AFN','ALL','AMD','ANG','AOA','ARS','AUD','AWG','AZN','BAM','BBD','BDT','BGN','BHD','BIF','BMD','BND','BOB','BRL','BSD','BTC','BTN','BWP','BYN','BYR','BZD','CAD','CDF','CHF','CLF','CLP','CNY','COP','CRC','CUC','CUP','CVE','CZK','DJF','DKK','DOP','DZD','EGP','ERN','ETB','EUR','FJD','FKP','GBP','GEL','GGP','GHS','GIP','GMD','GNF','GTQ','GYD','HKD','HNL','HRK','HTG','HUF','IDR','ILS','IMP','INR','IQD','IRR','ISK','JEP','JMD','JOD','JPY','KES','KGS','KHR','KMF','KPW','KRW','KWD','KYD','KZT','LAK','LBP','LKR','LRD','LSL','LVL','LYD','MAD','MDL','MGA','MKD','MMK','MNT','MOP','MRO','MUR','MVR','MWK','MXN','MYR','MZN','NAD','NGN','NIO','NOK','NPR','NZD','OMR','PAB','PEN','PGK','PHP','PKR','PLN','PYG','QAR','RON','RSD','RUB','RWF','SAR','SBD','SCR','SDG','SEK','SGD','SHP','SLL','SOS','SRD','STD','SVC','SYP','SZL','THB','TJS','TMT','TND','TOP','TRY','TTD','TWD','TZS','UAH','UGX','USD','UYU','UZS','VEF','VND','VUV','WST','XAF','XAG','XCD','XDR','XOF','XPF','YER','ZAR','ZMK','ZMW','ZWL']
 
-submit.addEventListener('click', ()=>{eses()})
+submit.addEventListener('click', ()=>{
+    if(weGood && !(toInpt.value=='') && (!fromInpt.value=='')){
+        passToApi()
+        result.innerHTML=''
+        result.style.textTransform='uppercase'
+    }
+    else{
+        result.style.textTransform='none'
+        result.innerHTML='No such currency'
+    }
+})
 fromInpt.addEventListener('input', ()=>{
     onInput(fromInpt, list[0])
 })
@@ -30,11 +33,11 @@ toInpt.addEventListener('input', ()=>{
     onInput(toInpt, list[1])
 })
 function onInput(input, list){
-    while (list.firstChild) {
+    while(list.firstChild){
         list.removeChild(list.lastChild);
       }
       currency.forEach(currency => {
-          if(currency.startsWith(input.value) || currency.startsWith(input.value.toLocaleUpperCase())){
+          if(currency.startsWith(input.value.toLocaleUpperCase())){
               const node = document.createElement('p');
               node.addEventListener('click', ()=>{
                   input.value = node.textContent
@@ -46,8 +49,15 @@ function onInput(input, list){
               list.appendChild(node);
           }
       });
+      if(list.firstChild){
+        input.style.backgroundColor = 'white'
+        weGood = true
+      }
+      else{
+        input.style.backgroundColor = 'pink'
+      }
 }
-function eses(){
+function passToApi(){
     const options = {
         method: 'GET',
         headers: {
@@ -59,4 +69,8 @@ function eses(){
     .then(response => response.json())
     .then(data => {result.innerHTML = amountInpt.value+' '+fromInpt.value+' =<span><br>'+data.new_amount+' '+toInpt.value+'</span>'})
     .catch(err => console.error(err));
+}
+function reset(){
+    fromInpt.value=''
+    toInpt.value=''
 }
